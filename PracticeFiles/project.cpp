@@ -1,19 +1,23 @@
 //Begin page main
-float rotateRate[3];
-int counter;
+float stateA[12];
+float stateB[12];
+float target[3];
 
 void init(){
-	rotateRate[0]=.5;
-	rotateRate[1]=.5;
-	rotateRate[2]=.5;
-	counter = 0;
+    
 }
 
 void loop(){
-	if(counter<30){
-	    api.setAttRateTarget(rotateRate);
-	    counter++;
-	}
+    if (api.getTime() == 0) {
+	   api.getMyZRState(stateA);
+	   api.getOtherZRState(stateB);
+    }
+    for (int a = 0; a < 3; a++) {
+        target[a] = (stateA[a] + stateB[a]) / 2;
+    }
+    api.setPositionTarget(target);
+    
+    DEBUG(("Lmao hi justin"));
 }
 
 //End page main
