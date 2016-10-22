@@ -195,7 +195,7 @@ bool dockItem(int id,bool isZone){
             minDist = .124;
         }
         if(isZone){
-            maxDist = .205;
+            maxDist = .2;
             minDist = .125;
         }
         initialize = false;
