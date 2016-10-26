@@ -183,13 +183,14 @@ void loop() {
                     mathVecNormalize(eDirVec,3);
                     mathVecNormalize(eZoneVec,3);
                     memcpy(oldPos,otherPos,sizeof(oldPos));
-                    if((acosf(mathVecInner(dirVec,eZoneVec,3))<.3)||distancecalc(otherPos,myZone)<.25){
+                    if((acosf(mathVecInner(dirVec,eZoneVec,3))<.5)||distancecalc(otherPos,myZone)<.325){
                         stealCount++;
+                        DEBUG(("MEMEMEMEM"));
                     }else{
                         stealCount=0;
                         enemyStealing = false;
                     }
-                    if((stealCount>4)&&(distancecalc(currentPos,itemPos)-distancecalc(otherPos,itemPos))<.125){
+                    if((stealCount>4)&&(distancecalc(currentPos,myZone)-distancecalc(otherPos,myZone))<.2){
                         enemyStealing = true;
                     }
                 }else{
